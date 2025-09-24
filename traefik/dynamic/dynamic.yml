@@ -1,0 +1,28 @@
+http:
+  middlewares:
+    auth-check:
+      forwardAuth:
+        address: "http://auth:8000"   # Docker service name for FastAPI auth
+        trustForwardHeader: true
+
+    pass-google-key:
+      headers:
+        customRequestHeaders:
+          X-API-KEY: "{X-Forwarded-Google-Api-Key}"  # header from auth service
+
+  routers:
+    google:
+      rule: "Host(`localhost`)"
+      entryPoints: ["web"]
+      service: google
+      middlewares:
+        - "auth-check"
+        - "pass-google-key"
+
+  services:
+    google:
+      loadBalancer:
+        servers:
+          - url: "https://maps.googleapis.com/maps/api"   # forwards to Google Maps API
+
+

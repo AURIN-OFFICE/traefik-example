@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  traefik:
+    image: traefik:3.5.2
+    ports:
+      - "80:80"
+      - "8080:8080" # dashboard
+    volumes:
+      - ./traefik/traefik.yml:/etc/traefik/traefik.yml:ro
+      - ./traefik/dynamic:/etc/traefik/dynamic:ro
+    depends_on:
+      - auth
+
+  auth:
+    build: ./auth
+    container_name: auth-service
+    environment:
+      - GOOGLE_API_KEY="test123"
+    expose:
+      - "8000"
+
