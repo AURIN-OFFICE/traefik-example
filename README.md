@@ -1,4 +1,4 @@
-# traefik-example
+# Traefik - Example
 This repository provides a minimal working example of integrating Traefik with a custom ForwardAuth middleware implemented in Python
 
 It acts as a gatekeeper in front of the Google Maps API, verifying requests before forwarding them and securely attaching the API key.
@@ -25,7 +25,7 @@ Client sends a request → https://localhost/geocode/json?...
 - Traefik forwards the request to Google Maps API, attaching the API key.
 
 ## Setup
-- 1. Clone repository
+  1. Clone the repository
   2. Replace GOOGLE_API_KEY docker-compose.yml
   3. run run.sh
   4. Open Test.ipynb and send a test request
