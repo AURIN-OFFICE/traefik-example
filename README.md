@@ -3,6 +3,7 @@ This repository provides a minimal working example of integrating Traefik with a
 
 It acts as a gatekeeper in front of the Google Maps API, verifying requests before forwarding them and securely attaching the API key.
 
+```text
 ├─ Test.ipynb # Notebook with an example of a good/bad request
 ├─ docker-compose.yml # Orchestrates Traefik + Auth service
 ├─ gatekeeper/
@@ -13,7 +14,7 @@ It acts as a gatekeeper in front of the Google Maps API, verifying requests befo
 └─ auth/
 ├─ Dockerfile # Python container for auth service
 └─ app.py # FastAPI app providing auth-check
-
+```
 
 ## How It Works
 Client sends a request → https://localhost/geocode/json?...
